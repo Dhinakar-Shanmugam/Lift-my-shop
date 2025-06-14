@@ -8,18 +8,20 @@ import 'typeface-baloo-2';
 import 'typeface-open-sans';
 import Footer from './pages/Footer.jsx';
 import Register from './pages/Register.jsx';
+import Login from './pages/Login.jsx';
+import Signup from './pages/Signup.jsx';
 
 const App = () => {
   return (
     <>
-    {/*
+    <Signup/>
+    <Login/>
     <Nav />
     <Home/>
     <About/>
     <Services/>
     <Review/>
     <Footer/>
-    */}
     <Register />
     </>
   )
