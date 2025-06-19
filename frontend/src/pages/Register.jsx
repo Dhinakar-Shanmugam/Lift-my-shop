@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import form from '../assets/images/form.png';
 
 const Register = () => {
@@ -11,6 +12,17 @@ const Register = () => {
         <div className='mx-4 md:mx-20 text-center md:text-left'>
           <h1 className='text-3xl font-bold text-white'>Promotion Booking Form</h1>
           <p className='text-white py-3'>Please fill in your shop and contact details. We’ll connect you with trusted local influencers to boost your business.</p>
+          <Link to={'/home'}>
+            <button
+              style={{
+                color: 'white',
+                border: 'none',
+                cursor: 'pointer'
+              }} className='underline'
+            >
+              Go Back
+            </button>
+            </Link>
         </div>
       </div>
       <div style={{ width: '90%', margin: 'auto' }} className='py-10 flex flex-col gap-4 items-center'>
