@@ -43,7 +43,8 @@ const Home = () => {
           <p className="font-palanquin pb-6 text-xl">
             Just book a promotion on our website. We contact social media pages near your area to promote your shop. You earn customers, we handle the rest!
           </p>
-          <Link to={'/register'}><button
+          
+          <Link to={`/register/${id}`}><button
             style={{
               background: 'linear-gradient(90deg, #9390F8, #3D82D4)',
               color: 'white',
@@ -54,7 +55,7 @@ const Home = () => {
               fontSize: '20px',
             }}
           >
-            Lift My Shop
+            Book Now
           </button>
           </Link>
         </div>

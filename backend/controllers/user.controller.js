@@ -24,15 +24,16 @@ export const signup = async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Error signing up user", error: error.message });
   }
-};
+}; 
 
 
 export const userName = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     if (!user) return res.status(404).json({ message: "User not found" });
-
-    res.status(200).json({ name: user.name });
+    
+    // If you want to return more user details, you can modify this object
+    res.status(200).json({ name: user.name , id: user._id });
   } catch (err) {
     res.status(500).json({ message: "Error fetching user", error: err.message });
     console.error(err);
