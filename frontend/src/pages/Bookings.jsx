@@ -1,24 +1,27 @@
-import React from 'react';
-import admin from '../assets/images/Admin.png';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import admin from '../assets/images/Admin.png';
+import { useParams } from 'react-router-dom';
 
+ // Fetch bookings for the logged-in user
 
-// Admin component to display all bookings
-const Admin = () => {
+const Bookings = () => {
 
   const [bookings, setBookings] = useState([]);
+ 
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:3000/api/bookings/read')
-      .then((response) => {
-        setBookings(response.data.bookings);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  const {userId} = useParams();
+  useEffect(() => { 
+  axios
+    .get(`http://localhost:3000/api/bookings/user/${userId}`)
+    .then((response) => {
+      setBookings(response.data.bookings);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}, []);
+
 
   return (
     <div>
@@ -30,15 +33,14 @@ const Admin = () => {
           <img src={admin} alt="admin" className="w-60 h-auto" />
         </div>
         <div className="text-center md:text-left w-full md:w-1/2">
-          <h1 className="text-3xl font-bold mb-2">Hello Chief!</h1>
+          <h1 className="text-3xl font-bold mb-2">Hello Boss!</h1>
           <p className="text-lg">
-            Here are the latest bookings from shop owners. Review, assign influencers,
-            and keep promotions running smoothly.
+            Here are your latest promotion bookings. Track their status, manage details, and stay updated on your shop’s marketing progress.
           </p>
         </div>
       </div>
 
-     <div className='max-w-7xl mx-auto p-5'>
+      <div className='max-w-7xl mx-auto p-5'>
         {bookings.length > 0 ? (
           bookings.map((booking, index) => (
             <div key={index} className='p-5 bg-white shadow-md rounded-lg mt-5'>
@@ -50,7 +52,7 @@ const Admin = () => {
               <p><span className='font-semibold'>Shop Name :</span> {booking.shopname}</p>
               <p><span className='font-semibold'>Shop Category :</span> {booking.shopcategory}</p>
               <p><span className='font-semibold'>Shop Address :</span> {booking.address}</p>
-              <p><span className='font-semibold'>Business Typem:</span> {booking.businesstype}</p>
+              <p><span className='font-semibold'>Business Type :</span> {booking.businesstype}</p>
               <p><span className='font-semibold'>Goal:</span> {booking.goal}</p>
               <p><span className='font-semibold'>Target Area :</span> {booking.targetarea}</p>
               <p><span className='font-semibold'>Starting Date :</span> {booking.startingdate}</p>
@@ -59,6 +61,9 @@ const Admin = () => {
               <p><span className='font-semibold'>Updated At :</span> {new Date(booking.updatedAt).toLocaleString()}</p>
 
               <div className='mt-3'>
+                <button className='mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+                  Update Details
+                </button>
                 <button className='mr-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>
                   Cancel Order
                 </button>
@@ -73,4 +78,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default Bookings;

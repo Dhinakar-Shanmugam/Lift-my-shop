@@ -5,6 +5,7 @@ import Register from './pages/Register.jsx';
 import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 import Admin from './pages/Admin.jsx';
+import Bookings from './pages/Bookings.jsx';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
     <Route path='/register' element={<Register />} />
     <Route path='/register/:id' element={<Register />} />
     <Route path='/admin/:id' element={<Admin />} />
+    <Route path='/bookings/:userId' element={<Bookings />} />
 
     </Routes>
   )

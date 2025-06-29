@@ -3,6 +3,7 @@ import form from '../assets/images/form.png';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
+import { useSnackbar } from 'notistack'
 
 const Register = () => {
 
@@ -20,7 +21,8 @@ const Register = () => {
   const [targetarea, setTargetarea] = useState('');
   const [startingdate, setStartingdate] = useState('');
   const [endingdate, setEndingdate] = useState('');
-
+  
+  const { enqueueSnackbar } = useSnackbar()
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -39,11 +41,39 @@ const Register = () => {
       startingdate,
       endingdate
     };
+
+    if (!fullname || !userid || !number || !email || !shopname || !shopcategory || !address || !businesstype || !goal || !targetarea || !startingdate || !endingdate) {
+      enqueueSnackbar('Please fill all the fields', { variant: 'error' });
+    }
+    if (userid !== id) {
+      enqueueSnackbar('User ID does not match', { variant: 'error' });
+      return;
+    }
+    if (number.length !== 10) {
+      enqueueSnackbar('Mobile number must be 10 digits', { variant: 'error' });
+      return;
+    }
+    if (!/^\d{2}-\d{2}-\d{4}$/.test(startingdate) || !/^\d{2}-\d{2}-\d{4}$/.test(endingdate)) {
+      enqueueSnackbar('Date format should be DD-MM-YYYY', { variant: 'error' });
+      return;
+    }
+    if (new Date(startingdate.split('-').reverse().join('-')) >= new Date(endingdate.split('-').reverse().join('-'))) {
+      enqueueSnackbar('Ending date must be after starting date', { variant: 'error' });
+      return;
+    }
+    if (businesstype === 'None') {
+      enqueueSnackbar('Please select a business type', { variant: 'error' });
+      return;
+    }
+
+
     try {
       const res = await axios.post('http://localhost:3000/api/bookings/create', data);
+      enqueueSnackbar('Booking created successfully', { variant: 'success' });
       console.log(res.data);
       navigate(`/home/${id}`);
     } catch (err) {
+      enqueueSnackbar('Booking creation failed', { variant: 'error' });
       console.log(err);
     }
   };

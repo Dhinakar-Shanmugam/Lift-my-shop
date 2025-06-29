@@ -44,7 +44,7 @@ const Home = () => {
             Just book a promotion on our website. We contact social media pages near your area to promote your shop. You earn customers, we handle the rest!
           </p>
           
-          <Link to={`/register/${id}`}><button
+          <Link to={`/register/${id}`}><button 
             style={{
               background: 'linear-gradient(90deg, #9390F8, #3D82D4)',
               color: 'white',
@@ -56,6 +56,22 @@ const Home = () => {
             }}
           >
             Book Now
+          </button>
+          </Link>
+
+          <Link to={`/bookings/${id}`}><button
+            style={{
+              background: 'linear-gradient(90deg, #9390F8, #3D82D4)',
+              color: 'white',
+              padding: '10px 20px',
+              border: 'none',
+              borderRadius: '100px',
+              cursor: 'pointer',
+              fontSize: '20px',
+              marginLeft: '10px',
+            }}
+          >
+            View Bookings
           </button>
           </Link>
         </div>

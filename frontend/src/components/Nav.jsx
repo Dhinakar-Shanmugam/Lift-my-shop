@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/images/logo2.png';
 import { Menu, X } from 'lucide-react'; // install lucide-react if not yet
 
+
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -33,7 +34,6 @@ const Nav = () => {
           <div className="nav-txt1">About</div>
           <div className="nav-txt2">Services</div>
           <div className="nav-txt2">Customers</div>
-          <div className="nav-txt3">Bookings</div>
           <div className="nav-txt3">Contact</div>
 
           <div className="nav-btn mt-4 md:mt-0">
