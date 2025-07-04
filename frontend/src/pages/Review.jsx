@@ -4,7 +4,7 @@ import influencer from '../assets/images/influencer.jpg';
 
 const Review = () => {
   return (
-    <div className="py-10" style={{ backgroundColor: '#f1f3fd', height: '100vh' }}>
+    <div id='customers' className="py-10" style={{ backgroundColor: '#f1f3fd', height: '100vh' }}>
         <h1 className='text-center text-3xl font-bold mb-10'>Client <span className='bg-gradient-to-r from-[#9390F8] to-[#3D82D4] bg-clip-text text-transparent'>Reviews</span> & Feedback</h1>
         <div className='services flex flex-col md:flex-row items-center justify-between'
          style={{ width: '90%', margin: 'auto', marginTop: '100px'}}>

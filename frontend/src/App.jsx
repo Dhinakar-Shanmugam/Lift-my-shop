@@ -6,6 +6,8 @@ import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 import Admin from './pages/Admin.jsx';
 import Bookings from './pages/Bookings.jsx';
+import BookingDelete from './pages/BookingDelete.jsx';
+import BookingUpdate from './pages/BookingUpdate.jsx';
 
 const App = () => {
   return (
@@ -18,7 +20,11 @@ const App = () => {
     <Route path='/register' element={<Register />} />
     <Route path='/register/:id' element={<Register />} />
     <Route path='/admin/:id' element={<Admin />} />
+    <Route path='/admin' element={<Admin />} />
     <Route path='/bookings/:userId' element={<Bookings />} />
+    <Route path='/booking/delete/:id' element={<BookingDelete />} />
+    <Route path='/booking/update/:id' element={<BookingUpdate />} />
+
 
     </Routes>
   )

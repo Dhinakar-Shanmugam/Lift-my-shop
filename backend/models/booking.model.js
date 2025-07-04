@@ -20,7 +20,6 @@ const bookingSchema = new mongoose.Schema(
         email : {
             type: String,
             required : true,
-            unique: true,
         },
 
         shopname : {
@@ -35,7 +34,7 @@ const bookingSchema = new mongoose.Schema(
 
         address : {
             type: String,
-            reqired : true,
+            required : true,
         },
 
         businesstype : {

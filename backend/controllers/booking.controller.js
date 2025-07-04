@@ -1,5 +1,3 @@
-import express from 'express';
-import mongoose from 'mongoose';
 import Booking from '../models/booking.model.js';
 
 export const createBooking = async (req, res) => {
@@ -54,3 +52,85 @@ export const getBookingsByUserId = async (req, res) => {
   }
 };
 
+export const updateBooking = async (req, res) => {
+  try {
+    const {
+      fullname,
+      userid,
+      number,
+      email,
+      shopname,
+      shopcategory,
+      address,
+      businesstype,
+      goal,
+      targetarea,
+      startingdate,
+      endingdate,
+    } = req.body; // ✅ Destructure these from req.body
+
+    if (
+      !fullname || !userid || !number || !email ||
+      !shopname || !shopcategory || !address || !businesstype ||
+      !goal || !targetarea || !startingdate || !endingdate
+    ) {
+      return res.status(400).json({ message: 'Please fill all the fields' });
+    }
+
+    const { id } = req.params;
+
+    const result = await Booking.findByIdAndUpdate(
+      id,
+      {
+        fullname,
+        userid,
+        number,
+        email,
+        shopname,
+        shopcategory,
+        address,
+        businesstype,
+        goal,
+        targetarea,
+        startingdate,
+        endingdate
+      },
+      { new: true }
+    );
+
+    if (!result) {
+      return res.status(404).json({ message: 'Booking not found' });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: 'Booking updated successfully',
+      booking: result
+    });
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      success: false,
+      message: 'Error updating booking',
+      error: error.message
+    });
+  }
+};
+
+
+export const deleteBooking = async(req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await Booking.findByIdAndDelete(id);
+
+    if (!result) {
+      return res.status(404).json({ message: 'Booking not found' });
+    }
+
+    return res.status(200).json({ success: true, message: 'Booking deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ success: false, message: 'Error deleting booking', error: error.message });
+  }
+}

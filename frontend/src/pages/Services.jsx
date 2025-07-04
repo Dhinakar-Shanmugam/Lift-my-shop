@@ -2,7 +2,7 @@ import React from 'react'
 
 const Services = () => {
   return (
-    <div className="py-10" style={{ backgroundColor: '#f1f3fd', height: '100vh' }}>
+    <div id='services' className="py-10" style={{ backgroundColor: '#f1f3fd', height: '100vh' }}>
         <div className='services flex flex-col md:flex-row items-center justify-between'
          style={{ width: '90%', margin: 'auto', marginTop: '100px'}}>
             <div className='bg-[white] rounded-lg shadow-lg p-6 m-4'>

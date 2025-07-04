@@ -3,7 +3,7 @@ import about from '../assets/images/about.png';
 
 const About = () => {
   return (
-    <div className="about py-10" style={{ backgroundColor: '#f1f3fd', height: '100vh' }}>
+    <div id='about' className="about py-10" style={{ backgroundColor: '#f1f3fd', height: '100vh' }}>
       <div className="flex flex-col md:flex-row items-center justify-between px-4 gap-10 md:px-0" style={{ width: '90%', margin: 'auto' }}>
  
         {/* About Image */}
@@ -30,7 +30,7 @@ const About = () => {
               fontSize: '20px',
             }}
           >
-            Learn More
+            <a href="#services">Learn More</a>
           </button>
         </div>
       </div>

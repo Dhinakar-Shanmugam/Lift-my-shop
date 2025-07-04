@@ -58,8 +58,9 @@ const Login = () => {
               <span style={{color:"#4B53F2"}}
                 className='underline'>Register Here
               </span>
-              </Link>            
-            </p></center>
+              </Link>    or   <Link to={"/admin"}><span style={{color:"#4B53F2"}}
+                className='underline'>Admin</span></Link>        
+            </p></center> 
         </div>
     </div>
   )

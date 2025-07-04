@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import admin from '../assets/images/Admin.png';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
  // Fetch bookings for the logged-in user
 
 const Bookings = () => {
-
+  
   const [bookings, setBookings] = useState([]);
  
-
   const {userId} = useParams();
   useEffect(() => { 
   axios
@@ -37,6 +37,17 @@ const Bookings = () => {
           <p className="text-lg">
             Here are your latest promotion bookings. Track their status, manage details, and stay updated on your shop’s marketing progress.
           </p>
+          <Link to={`/home/${userId}`}>
+            <button
+              style={{
+                color: 'white',
+                border: 'none',
+                cursor: 'pointer'
+              }} className='underline'
+            >
+              Go Back
+            </button>
+            </Link>
         </div>
       </div>
 
@@ -61,12 +72,12 @@ const Bookings = () => {
               <p><span className='font-semibold'>Updated At :</span> {new Date(booking.updatedAt).toLocaleString()}</p>
 
               <div className='mt-3'>
+               <Link to={`/booking/update/${booking._id}`}> 
                 <button className='mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
-                  Update Details
+                  Edit Booking
                 </button>
-                <button className='mr-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>
-                  Cancel Order
-                </button>
+                </Link>
+
               </div>
             </div>
           ))

@@ -28,8 +28,8 @@ const Signup = () => {
     const res = await axios.post('http://localhost:3000/api/users/signup', data);
     console.log("Signup success:", res.data);
     enqueueSnackbar('User created successfully', { variant: 'success' });
-    const userId = res.data.id;
-    navigate(`/home/${userId}`);
+    
+    navigate(`/login`);
   } catch (error) {
     // Log every possible error object
     console.error("Signup error:", error);

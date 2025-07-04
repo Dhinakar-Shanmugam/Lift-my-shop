@@ -1,6 +1,7 @@
 import React from 'react';
 import admin from '../assets/images/Admin.png';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -35,6 +36,17 @@ const Admin = () => {
             Here are the latest bookings from shop owners. Review, assign influencers,
             and keep promotions running smoothly.
           </p>
+          <Link to={`/login`}>
+            <button
+              style={{
+                color: 'white',
+                border: 'none',
+                cursor: 'pointer'
+              }} className='underline'
+            >
+              Go Back
+            </button>
+            </Link>
         </div>
       </div>
 
@@ -50,7 +62,7 @@ const Admin = () => {
               <p><span className='font-semibold'>Shop Name :</span> {booking.shopname}</p>
               <p><span className='font-semibold'>Shop Category :</span> {booking.shopcategory}</p>
               <p><span className='font-semibold'>Shop Address :</span> {booking.address}</p>
-              <p><span className='font-semibold'>Business Typem:</span> {booking.businesstype}</p>
+              <p><span className='font-semibold'>Business Type :</span> {booking.businesstype}</p>
               <p><span className='font-semibold'>Goal:</span> {booking.goal}</p>
               <p><span className='font-semibold'>Target Area :</span> {booking.targetarea}</p>
               <p><span className='font-semibold'>Starting Date :</span> {booking.startingdate}</p>
@@ -59,9 +71,11 @@ const Admin = () => {
               <p><span className='font-semibold'>Updated At :</span> {new Date(booking.updatedAt).toLocaleString()}</p>
 
               <div className='mt-3'>
+                 <Link to={`/booking/delete/${booking._id}`}>
                 <button className='mr-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>
-                  Cancel Order
+                  Expired! Close Booking
                 </button>
+                </Link>
               </div>
             </div>
           ))

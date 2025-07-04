@@ -31,10 +31,10 @@ const Nav = () => {
           } absolute md:static bg-white md:bg-transparent p-5 rounded-lg top-20 right-6 z-10 shadow md:shadow-none`}
         >
           <div className="nav-txt1" style={{ color: '#9390f8' }}>Home</div>
-          <div className="nav-txt1">About</div>
-          <div className="nav-txt2">Services</div>
-          <div className="nav-txt2">Customers</div>
-          <div className="nav-txt3">Contact</div>
+         <div className="nav-txt1" ><a href="#about">About</a></div>
+          <div className="nav-txt2"><a href="#services">Services</a></div>
+          <div className="nav-txt2"><a href="#customers">Customers</a></div>
+          <div className="nav-txt3"><a href="#contact">Contact</a></div>
 
           <div className="nav-btn mt-4 md:mt-0">
             <Link to={'/login'}>
